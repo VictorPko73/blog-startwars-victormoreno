@@ -1,3 +1,4 @@
+
 import { Image, useEffect } from "react";
 
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
@@ -66,13 +67,13 @@ export const Home = () => {
               >
                 {/* Imagen del personaje (usando visualguide) */}
                 <img
-                  src={`https://starwars-visualguide.com/assets/img/characters/${person.uid}.jpg`}
+                  src={``}
                   className="card-img-top"
                   alt={person.name}
                   style={{ height: "200px", objectFit: "cover" }}
                   onError={(e) =>
                     (e.target.src =
-                      "https://starwars-visualguide.com/assets/img/placeholder.jpg")
+                      "")
                   }
                 />
                 <div className="card-body">
@@ -107,7 +108,7 @@ export const Home = () => {
 
 	     {/* DESDE AQUIIIIIIIIIIIIIIIIIIII */}
       <div className="container my-4">
-        <h2>People</h2>
+        <h2>Vehicles</h2>
         {/* Carrusel horizontal con scroll */}
         <div
           className="d-flex flex-row gap-3 overflow-auto pb-3"
@@ -116,8 +117,8 @@ export const Home = () => {
             WebkitOverflowScrolling: "touch",
           }}
         >
-          {store.people && store.people.length > 0 ? (
-            store.people.map((person, index) => (
+          {store.vehicles && store.vehicles.length > 0 ? (
+            store.vehicles.map((vehicles, index) => (
               <div
                 className="card h-100"
                 key={index}
@@ -129,22 +130,22 @@ export const Home = () => {
               >
                 {/* Imagen del personaje (usando visualguide) */}
                 <img
-                  src={`https://starwars-visualguide.com/assets/img/characters/${person.uid}.jpg`}
+                  src={``}
                   className="card-img-top"
-                  alt={person.name}
+                  alt={vehicles.name}
                   style={{ height: "200px", objectFit: "cover" }}
                   onError={(e) =>
                     (e.target.src =
-                      "https://starwars-visualguide.com/assets/img/placeholder.jpg")
+                      "")
                   }
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{person.name}</h5>
+                  <h5 className="card-title">{vehicles.name}</h5>
                   {/* Aquí podrías mostrar más info si la tienes en el store */}
-                  <p className="card-text">ID: {person.uid}</p>
+                  <p className="card-text">ID: {vehicles.uid}</p>
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
                   <a
-                    href={`/single/${person.uid}`}
+                    href={`/single/${vehicles.uid}`}
                     className="btn btn-primary me-2"
                   >
                     Learn more!
@@ -153,7 +154,7 @@ export const Home = () => {
                   <button
                     className="btn btn-outline-warning"
                     onClick={() =>
-                      dispatch({ type: "add_favorite", payload: person })
+                      dispatch({ type: "add_favorite", payload: vehicle })
                     }
                     title="Añadir a favoritos"
                   >
@@ -168,14 +169,69 @@ export const Home = () => {
         </div>
       </div>
 
-      <div>
+         {/* DESDE AQUIIIIIIIIIIIIIIIIIIII */}
+      <div className="container my-4">
         <h2>Planets</h2>
-        {store.planets && store.planets.length > 0
-          ? store.planets.map((planet, index) => (
-              <p key={index}>{planet.name}</p>
+        {/* Carrusel horizontal con scroll */}
+        <div
+          className="d-flex flex-row gap-3 overflow-auto pb-3"
+          style={{
+            scrollSnapType: "x mandatory",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          {store.planets && store.planets.length > 0 ? (
+            store.planets.map((planets, index) => (
+              <div
+                className="card h-100"
+                key={index}
+                style={{
+                  minWidth: "18rem",
+                  maxWidth: "18rem",
+                  scrollSnapAlign: "start",
+                }}
+              >
+                {/* Imagen del personaje (usando visualguide) */}
+                <img
+                  src={``}
+                  className="card-img-top"
+                  alt={planets.name}
+                  style={{ height: "200px", objectFit: "cover" }}
+                  onError={(e) =>
+                    (e.target.src =
+                      "")
+                  }
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{planets.name}</h5>
+                  {/* Aquí podrías mostrar más info si la tienes en el store */}
+                  <p className="card-text">ID: {planets.uid}</p>
+                  {/* Botón para ver detalles (debería llevar a /single/:theId) */}
+                  <a
+                    href={`/single/${planets.uid}`}
+                    className="btn btn-primary me-2"
+                  >
+                    Learn more!
+                  </a>
+                  {/* Botón para añadir a favoritos */}
+                  <button
+                    className="btn btn-outline-warning"
+                    onClick={() =>
+                      dispatch({ type: "add_favorite", payload: planets })
+                    }
+                    title="Añadir a favoritos"
+                  >
+                    <i className="fa fa-heart"></i>
+                  </button>
+                </div>
+              </div>
             ))
-          : "Cargando..."}
+          ) : (
+            <div className="text-center w-100">Cargando...</div>
+          )}
+        </div>
       </div>
+
     </div>
   );
 };
