@@ -79,7 +79,8 @@ export const Home = () => {
                 <div className="card-body">
                   <h5 className="card-title">{person.name}</h5>
                   {/* Aquí podrías mostrar más info si la tienes en el store */}
-                  <p className="card-text">ID: {person.uid}</p>
+                  <p className="card-text">Eye-Color: {person.eye_color}</p>
+                  <p className="card-text">Hair_Color: {person.hair_color}</p>
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
                   <a
                     href={`/single/${person.uid}`}
