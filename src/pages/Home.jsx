@@ -1,7 +1,19 @@
 
+
 import { Image, useEffect } from "react";
 
+
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+
+// Funciones para localStorage favoritos
+const getFavoritesFromLocalStorage = () => {
+  const favs = localStorage.getItem("favorites");
+  return favs ? JSON.parse(favs) : [];
+};
+
+const saveFavoritesToLocalStorage = (favorites) => {
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+};
 
 import {
   getPeople,
@@ -40,6 +52,18 @@ export const Home = () => {
     };
     loadPlanets();
   }, [dispatch]);
+
+  // Añadir a favoritos en localStorage
+  const addFavoriteLocal = (item) => {
+    const favs = getFavoritesFromLocalStorage();
+    // Evitar duplicados por uid
+    if (!favs.some(f => f.uid === item.uid)) {
+      favs.push(item);
+      saveFavoritesToLocalStorage(favs);
+      // Disparar evento para sincronizar Navbar
+      window.dispatchEvent(new Event("storage"));
+    }
+  };
 
   return (
     <div className="text-center mt-5">
@@ -91,9 +115,7 @@ export const Home = () => {
                   {/* Botón para añadir a favoritos */}
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() =>
-                      dispatch({ type: "add_favorite", payload: person })
-                    }
+                    onClick={() => addFavoriteLocal(person)}
                     title="Añadir a favoritos"
                   >
                     <i className="fa fa-heart"></i>
@@ -154,9 +176,7 @@ export const Home = () => {
                   {/* Botón para añadir a favoritos */}
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() =>
-                      dispatch({ type: "add_favorite", payload: vehicle })
-                    }
+                    onClick={() => addFavoriteLocal(vehicles)}
                     title="Añadir a favoritos"
                   >
                     <i className="fa fa-heart"></i>
@@ -217,9 +237,7 @@ export const Home = () => {
                   {/* Botón para añadir a favoritos */}
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() =>
-                      dispatch({ type: "add_favorite", payload: planets })
-                    }
+                    onClick={() => addFavoriteLocal(planets)}
                     title="Añadir a favoritos"
                   >
                     <i className="fa fa-heart"></i>
