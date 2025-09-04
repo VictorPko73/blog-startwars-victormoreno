@@ -109,7 +109,7 @@ export const Home = () => {
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
                   {/* Usar Link para navegación SPA, no <a> */}
                   <Link
-                    to={`/single/${person.uid}`}
+                    to={`/person/${person.uid}`}
                     className="btn btn-primary me-2"
                   >
                     Learn more!

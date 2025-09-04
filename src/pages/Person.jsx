@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 // Componente de detalle para mostrar la información de un personaje
-export const Single = () => {
+export const Person = () => {
   // Obtener el parámetro de la URL (uid del personaje)
   const { theId } = useParams();
 
