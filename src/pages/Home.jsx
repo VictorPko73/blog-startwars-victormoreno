@@ -170,7 +170,7 @@ export const Home = () => {
                   <p className="card-text">ID: {vehicles.uid}</p>
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
                   <Link
-                    to={`/single/${vehicles.uid}`}
+                    to={`/vehicles/${vehicles.uid}`}
                     className="btn btn-primary me-2"
                   >
                     Learn more!
@@ -231,7 +231,7 @@ export const Home = () => {
                   <p className="card-text">ID: {planets.uid}</p>
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
                   <Link
-                    to={`/single/${planets.uid}`}
+                    to={`/planets/${planets.uid}`}
                     className="btn btn-primary me-2"
                   >
                     Learn more!
