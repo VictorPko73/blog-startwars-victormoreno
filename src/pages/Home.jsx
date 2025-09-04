@@ -1,6 +1,8 @@
 
 
+
 import { Image, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
@@ -18,8 +20,7 @@ const saveFavoritesToLocalStorage = (favorites) => {
 import {
   getPeople,
   getVehicles,
-  getPlanets,
-} from "../sevices/starsWarsServices.js";
+  getPlanets,} from "../sevices/starsWarsServices.js";
 
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -106,12 +107,13 @@ export const Home = () => {
                   <p className="card-text">Eye-Color: {person.eye_color}</p>
                   <p className="card-text">Hair_Color: {person.hair_color}</p>
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
-                  <a
-                    href={`/single/${person.uid}`}
+                  {/* Usar Link para navegación SPA, no <a> */}
+                  <Link
+                    to={`/single/${person.uid}`}
                     className="btn btn-primary me-2"
                   >
                     Learn more!
-                  </a>
+                  </Link>
                   {/* Botón para añadir a favoritos */}
                   <button
                     className="btn btn-outline-warning"
@@ -167,12 +169,12 @@ export const Home = () => {
                   {/* Aquí podrías mostrar más info si la tienes en el store */}
                   <p className="card-text">ID: {vehicles.uid}</p>
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
-                  <a
-                    href={`/single/${vehicles.uid}`}
+                  <Link
+                    to={`/single/${vehicles.uid}`}
                     className="btn btn-primary me-2"
                   >
                     Learn more!
-                  </a>
+                  </Link>
                   {/* Botón para añadir a favoritos */}
                   <button
                     className="btn btn-outline-warning"
@@ -228,12 +230,12 @@ export const Home = () => {
                   {/* Aquí podrías mostrar más info si la tienes en el store */}
                   <p className="card-text">ID: {planets.uid}</p>
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
-                  <a
-                    href={`/single/${planets.uid}`}
+                  <Link
+                    to={`/single/${planets.uid}`}
                     className="btn btn-primary me-2"
                   >
                     Learn more!
-                  </a>
+                  </Link>
                   {/* Botón para añadir a favoritos */}
                   <button
                     className="btn btn-outline-warning"
