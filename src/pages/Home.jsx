@@ -104,7 +104,7 @@ export const Home = () => {
                 <div className="card-body">
                   <h5 className="card-title">{person.name}</h5>
                   {/* Aquí podrías mostrar más info si la tienes en el store */}
-                  <p className="card-text">Eye-Color: {person.eye_color}</p>
+                  <p className="card-text mb-1">Eye-Color: {person.eye_color}</p>
                   <p className="card-text">Hair_Color: {person.hair_color}</p>
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
                   {/* Usar Link para navegación SPA, no <a> */}
@@ -167,7 +167,7 @@ export const Home = () => {
                 <div className="card-body">
                   <h5 className="card-title">{vehicles.name}</h5>
                   {/* Aquí podrías mostrar más info si la tienes en el store */}
-                  <p className="card-text">ID: {vehicles.uid}</p>
+                  <p className="card-text">Model: {vehicles.model}</p>
                   {/* Botón para ver detalles (debería llevar a /single/:theId) */}
                   <Link
                     to={`/vehicles/${vehicles.uid}`}
@@ -227,9 +227,10 @@ export const Home = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{planets.name}</h5>
-                  {/* Aquí podrías mostrar más info si la tienes en el store */}
-                  <p className="card-text">ID: {planets.uid}</p>
-                  {/* Botón para ver detalles (debería llevar a /single/:theId) */}
+                  
+                  <p className="card-text mb-1" >Climate: {planets.climate}</p>
+                  <p className="card-text ">Terrain: {planets.terrain}</p>
+                 
                   <Link
                     to={`/planets/${planets.uid}`}
                     className="btn btn-primary me-2"
