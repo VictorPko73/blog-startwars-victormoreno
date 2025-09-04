@@ -39,27 +39,40 @@ export const Navbar = () => {
     <nav className="navbar navbar-light bg-light">
       <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1">React Boilerplate</span>
+          <span className="navbar-brand mb-0 h1">
+            <img
+              src="https://m.media-amazon.com/images/I/81EQuc1SHkL.jpg"
+              className="img-fluid"
+              alt="Logo"
+              style={{ maxHeight: "75px" }} 
+            />
+          </span>
         </Link>
         <div className="ml-auto d-flex align-items-center gap-3">
-          
           {/* Dropdown de favoritos */}
           <div className="dropdown">
             <button
-              className="btn btn-warning dropdown-toggle"
+              className="btn btn-primary dropdown-toggle"
               type="button"
               id="favoritesDropdown"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Favorites <span className="badge bg-dark">{favorites.length}</span>
+              Favorites{" "}
+              <span className="badge bg-dark">{favorites.length}</span>
             </button>
-            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="favoritesDropdown">
+            <ul
+              className="dropdown-menu dropdown-menu-end"
+              aria-labelledby="favoritesDropdown"
+            >
               {favorites.length === 0 ? (
                 <li className="dropdown-item">(empty)</li>
               ) : (
                 favorites.map((item, idx) => (
-                  <li className="dropdown-item d-flex justify-content-between align-items-center" key={idx}>
+                  <li
+                    className="dropdown-item d-flex justify-content-between align-items-center"
+                    key={idx}
+                  >
                     <span>{item.name}</span>
                     <button
                       className="btn btn-sm btn-outline-danger ms-2"
